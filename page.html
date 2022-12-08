@@ -12,23 +12,28 @@
 
 <!-- bootstrap cdn -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
-    <!-- google fonts -->
+<!-- google fonts -->
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+
 
 <!-- slick js carusela -->
 
-<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
 
 <!-- my styles -->
 <link rel="stylesheet" href="./dist/css/style-min.css">
 <link rel="stylesheet" href="./dist/css/products-page-min.css">
 <link rel="stylesheet" href="./dist/css/medium-min.css">
 <link rel="stylesheet" href="./dist/css/large-min.css">
+
+
+
 
 </head>
 
@@ -50,49 +55,70 @@
     </div>
   </nav>
 
+
     <main>
 
-        <section class="products wrapper">
+        <section class=" wrapper">
 
             <div class="category__menu">
                 <h2 class="category__menu-title">Nakrycia głowy</h2>
                 <button class="btn btn--show show-moreBtn-hats">Pokaż więcej</button>
             </div>
-     
-                
 
-                <div class="products hats">
-                    <div class="product">
-                        <h2 class="product-title">Czapeczka</h2>
-                        <img src="/dist/img/products/basball-hat-min.webp" alt="basballowka">
-                        <p class="product-description">Cena: <span class="product-price">35zł</span></p>
-                    </div>
-                    <div class="product">
-                        <h2 class="product-title">Czapeczka</h2>
-                        <img src="/dist/img/products/basball-hat-min.webp" alt="basballowka">
-                        <p class="product-description">Cena: <span class="product-price">35zł</span></p>
+
+
+            <div class="products hats">
+
+                <!-- <div class="product" id="1">
+                    <img src="/dist/img/products/test-min.jpg" alt="basballowka">
+                    <div class="product__body">
+                        <h2 class="product__body-title">Czapeczka</h2>
+                        <p class="product__body-description">Cena: <span class="product__body-price">35zł</span></p>
                     </div>
 
                 </div>
-          
 
-                <div class="category__menu">
-                    <h2 class="category__menu-title">Szaliki</h2>
-                    <button class="btn btn--show show-moreBtn-scarfs">Pokaż więcej</button>
+
+                <div class="product" id="2">
+                    <img src="/dist/img/products/glowa-002-min.webp" alt="basballowka">
+                    <div class="product__body">
+                        <h2 class="product__body-title">Czapeczka</h2>
+                        <p class="product__body-description">Cena: <span class="product__body-price">35zł</span></p>
+                    </div>
+
                 </div>
+                <div class="product" id="3">
+                    <img src="/dist/img/products/glowa-003-min.webp" alt="basballowka">
+                    <div class="product__body">
+                        <h2 class="product__body-title">Czapeczka</h2>
+                        <p class="product__body-description">Cena: <span class="product__body-price">35zł</span></p>
+                    </div>
+                </div> -->
+
+            </div>
+
+
+            <div class="category__menu">
+                <h2 class="category__menu-title">Szaliki</h2>
+                <button class="btn btn--show show-moreBtn-scarfs">Pokaż więcej</button>
+            </div>
 
             <div class="products scarfs">
 
-                <div class="product">
-                    <h2 class="product-title">Czapeczka</h2>
+                <!-- <div class="product">
                     <img src="/dist/img/products/basball-hat-min.webp" alt="basballowka">
-                    <p class="product-description">Cena: <span class="product-price">35zł</span></p>
+                    <div class="product__body">
+                        <h2 class="product__body-title">Czapeczka</h2>
+                        <p class="product__body-description">Cena: <span class="product__body-price">35zł</span></p>
+                    </div>
                 </div>
                 <div class="product">
-                    <h2 class="product-title">Czapeczka</h2>
                     <img src="/dist/img/products/basball-hat-min.webp" alt="basballowka">
-                    <p class="product-description">Cena: <span class="product-price">35zł</span></p>
-                </div>
+                    <div class="product__body">
+                        <h2 class="product__body-title">Czapeczka</h2>
+                        <p class="product__body-description">Cena: <span class="product__body-price">35zł</span></p>
+                    </div>
+                </div> -->
 
             </div>
 
@@ -102,9 +128,37 @@
         </section>
 
     </main>
+    <div class="modal">
+
+        <button class="close-modal btn">X</button>
+
+        <div class="modal__box">
+
+
+            <img alt="basballowka" class="modal-img">
+
+            <div class="modal__text">
+
+                <h2 class="modal__box-title"></h2>
+
+                <p class="long-description">Lorem ipsum, dolor sit amet consectetur adipisicing.</p>
+
+
+
+                <div class="modal__text-ad">
+                    <p class="quantity">Dostępne<span class="quantity-span">4</span></p>
+                    <p class="product-description">Cena <span class="product-price"></span></p>
+
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
 
     <div class="footer">
-    <p>PanCzapeczka Sp.zoo <span class="footer__year">2022</spanc>
+    <p>PanCzapeczka Sp.zoo &copy;<span class="footer__year">2022</spanc>
     </p>
 </div>
     <!-- bootstrap cdn -->
@@ -116,6 +170,12 @@
 <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
+
+<!-- firebase config -->
+
+
+
+<!--  -->
 
 <script type="text/javascript" src="./dist/js/slick-min.js"></script>
 

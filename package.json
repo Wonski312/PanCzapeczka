@@ -29,6 +29,8 @@
     "sass": "^1.49.7"
   },
   "dependencies": {
-    "firebase": "^9.6.8"
+    "axios": "^0.26.1",
+    "firebase": "^9.8.2",
+    "firebaseui": "^6.0.1"
   }
 }

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pan Czapeczka</title>
+
+    <!-- font awsome kit -->
+<script src="https://kit.fontawesome.com/af86d45df6.js" crossorigin="anonymous"></script>
+
+<!-- bootstrap cdn -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<!-- google fonts -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Mochiy+Pop+One&display=swap" rel="stylesheet">
+
+
+<!-- slick js carusela -->
+
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+
+<!-- my styles -->
+<link rel="stylesheet" href="./dist/css/style-min.css">
+<link rel="stylesheet" href="./dist/css/products-page-min.css">
+<link rel="stylesheet" href="./dist/css/medium-min.css">
+<link rel="stylesheet" href="./dist/css/large-min.css">
+
+
+
+
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+        <div class="container-fluid d-md-flex justify-content-md-between p-3">
+          <a class="navbar-brand ms-3" href="/index.html"><span><i class="fas fa-hat-wizard"></i></span> Pan Czapeczka</a>
+          <button class="navbar-toggler me-sm-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+            <div class="navbar-nav ms-auto mt-md-0  me-md-3 mt-sm-2">
+              <a class="nav-link text-center text-black mt-3 mt-md-0 p-3" aria-current="page" href="./index.html">Strona Główna</a>
+              <a class="nav-link text-center text-black p-3" href="./page.html">Produkty</a>
+              <a class="nav-link text-center text-black p-3" href="./index.html#contact">Kontakt</a>
+
+              <button class="logoutBtn btn">Wyloguj się</button>
+
+            </div>
+          </div>
+        </div>
+      </nav>
+
+    <div class="section login">
+
+        <div class="login__box">
+
+            <form action="userLogin" class="login-form">
+                <label for="login-user">Użytkownik
+                </label>
+                <input type="text" name="username" id="username">
+                <label for="login-password">hasło</label>
+                <input type="password" name="password" id="password">
+            </form>
+            
+            <button class="btn authBtn">Wyślij</button>
+            <div class="error-box"></div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <div class="wrapper admin">
+
+        
+
+        
+        <form action="arraysChoose" class="arraysChoose">
+            <select name="arrays" id="arrOpt" class="arrOopt">
+                <option value="0">---</option>
+                <option value="hatsOpt">Czapki</option>
+                <option value="scarfsOpt">Szaliki</option>
+            </select>
+        </form>
+        
+        
+        <form action="" class="input__box">
+            
+          
+
+            <label for="name" class="input__box-label">Podaj nazwę</label>
+            <input type="text" name="name" id="name" class="input__box-input input__box-title">
+
+            <label for="quantity-change" class="input__box-label">Zmień ilość</label>
+            <input type="number" name="quantity" id="quantity-change" class=" input__box-input input__box-quantity">
+
+            <label for="price" class="input__box-label">Podaj cenę</label>
+            <input type="number" name="price" id="price" class=" input__box-input input__box-price">
+
+            <label for="url" class="input__box-label">Podaj ścieżkę do zdjecia (/dist/img/products/)</label>
+            <input type="url" name="url" id="url" class=" input__box-input input__box-url"
+                placeholder="/dist/img/products/[yourFileName]">
+
+            <label for="long-description" class="input__box-label">Opis</label>
+            <textarea name="long-description" id="long-description-input"
+                class=" input__box-input input__box-long-description"></textarea>
+        </form>
+
+        <p class="warning-admin"><span class="warning-admin-productSpan"></span></p>
+
+        <button type="submit" class="btn input-btn">Wyślij</button>
+
+
+    </div>
+
+    <script src="/dist/js/productsDataBase-min.js"></script>
+    <script src="/dist/js/products-script-min.js"></script>
+
+    <script type="module">
+
+
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-app.js'
+
+        // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+
+        // Add Firebase products that you want to use
+        import {
+            getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut
+        } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-auth.js'
+
+        import { getDatabase, ref, set } from 'https://www.gstatic.com/firebasejs/9.8.2/firebase-database.js'
+
+        const firebaseApp = initializeApp({
+            apiKey: "AIzaSyD555ygTDjttj2Gzlb1qbXAO278m2fPR28",
+            authDomain: "panczapeczka-2393d.firebaseapp.com",
+            databaseURL: "https://panczapeczka-2393d-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "panczapeczka-2393d",
+            storageBucket: "panczapeczka-2393d.appspot.com",
+            messagingSenderId: "12877464172",
+            appId: "1:12877464172:web:ee37829b4b6ee7e90f8e49"
+        })
+
+
+        const auth = getAuth(firebaseApp)
+
+        const logoutBtn = document.querySelector('.logoutBtn');
+        const registerPanel = document.querySelector(".login");
+        const adminPanel = document.querySelector('.admin');
+        const authBtn = document.querySelector('.authBtn');
+        const showSignInContent = () => {
+            registerPanel.style.display = 'none';
+            adminPanel.style.display = 'block';
+            logoutBtn.style.display = 'block';
+        }
+        const showSignInForm = () => {
+            registerPanel.style.display = 'block';
+            adminPanel.style.display = 'none';
+            logoutBtn.style.display = 'none';
+        }
+
+        const logginWithEmail = async () => {
+            const loginEmail = document.querySelector("#username").value;
+            const loginPassword = document.querySelector("#password").value;
+
+            try {
+                const userCreditentials = await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+                console.log(userCreditentials.user);
+
+            } catch (error) {
+                const errorBox = document.querySelector('.error-box');
+
+                errorBox.style.display = 'block';
+
+                const errorCode = error.code;
+
+                if (errorCode == 'auth/wrong-password') {
+                    errorBox.innerHTML = 'Wrong Password';
+                }
+            }
+
+        }
+
+
+        // reaction to signing in user 
+        const monitorAuthState = async () => {
+            onAuthStateChanged(auth, user => {
+                if (user) {
+                    console.log(user);
+                    showSignInContent();
+
+                    // proba zarzadzania
+
+                } else {
+                    showSignInForm();
+                    errorBox.style.display = 'none';
+                    console.log('you are not logged in');
+                }
+            })
+        }
+
+        monitorAuthState();
+
+        function writeProductData(productId, name, quantity, price, imgurl, longDescription) {
+            const db = getDatabase();
+            const reference = ref(db, `${chosenOpt}/` + productId);
+
+            set(reference, {
+                productId: productId,
+                name: name,
+                quantity: quantity,
+                price: price,
+                imgurl: imgurl,
+                longDescription: longDescription
+            });
+        }
+
+        // writeProductData('czapeczkaNowa', 'nowaczapka', 'myemail.test', 'myimguirl');
+
+        const logout = async () => {
+            await signOut(auth);
+        }
+
+
+
+        // tutaj bylo wczesniej formbtn dzialające
+        formBtn.addEventListener('click', function () {
+            const productName = document.querySelector(".input__box-title").value
+
+            const productTitle = document.querySelector(".input__box-title").value
+
+            const quantityOfProduct = document.querySelector(".input__box-quantity").value;
+
+            const priceOfProduct = document.querySelector(".input__box-price").value;
+
+            const thisimgurl = document.querySelector(".input__box-url").value;
+
+            const longDescriptionOfProduct = document.querySelector(".input__box-long-description").value;
+
+            const warning = document.querySelector('.warning-admin');
+
+            const productNameInput = document.querySelector(".input__box-title");
+
+            if (chosenOpt == '0') {
+
+                
+
+                warning.style.display = 'block';
+                warning.textContent = 'Wybierz jedna z opcji';
+
+            } else {
+
+                
+                if (productName != "") {
+                    
+                    warning.style.display = 'none';
+                    warning.textContent = '';
+
+                    productNameInput.style.backgroundColor = 'white'
+                    productNameInput.style.border = '1px solid black';
+
+                    const url = `https://panczapeczka-2393d-default-rtdb.europe-west1.firebasedatabase.app/${chosenOpt}.json`;
+
+                    const headers = new Headers();
+                    headers.append("Content-Type", "application/json");
+
+                    const filterDataBase = () => {
+                        fetch(url, {
+                            method: "GET",
+                            headers: headers,
+                            cors: "no-cors",
+                        })
+                            .then((res) => res.json())
+                            .then((res) => {
+                                const tempArr = [];
+                                console.log("pobrana baza");
+                                for (const key in res) {
+                                    tempArr.push({ ...res[key], id: key });
+                                }
+
+                                const results = tempArr.find(({ name }) => name == productName.value);
+
+                                // if the product is found it shows the info about changing details of product
+                                if (results == undefined) {
+                                   
+
+                                    writeProductData(productName, productTitle, quantityOfProduct, priceOfProduct, thisimgurl, longDescriptionOfProduct);
+
+                                    warning.style.display = 'block';
+                                    warning.textContent = 'Dodałeś nowy product';
+
+
+                                } else {
+
+                                    // adding new product to database when is not found by title
+                                    writeProductData(productName, productTitle, quantityOfProduct, priceOfProduct, thisimgurl, longDescriptionOfProduct);
+
+                                    
+                                    warning.style.display = 'block';
+                                    warning.textContent = 'Zminiłeś istniejący product';
+                                }
+
+                                console.log(results);
+                                console.log(tempArr);
+                            });
+                    };
+                    filterDataBase();
+
+
+                    // writeProductData(productName, productTitle, quantityOfProduct, priceOfProduct, thisimgurl,longDescriptionOfProduct);
+
+                    // const warning = document.querySelector('.warning-admin');
+
+                    // warning.style.display = 'block';
+                    // warning.textContent = 'Dodałeś nowy product';
+                } else {
+                    
+
+                    productNameInput.style.backgroundColor = '#db606098'
+                    // productNameInput.style.border = 'none';
+                  
+
+                    warning.style.display = 'block';
+                    warning.textContent = 'Musisz podac nazwę produktu';
+                }
+
+            }
+
+
+
+
+        });
+
+        authBtn.addEventListener('click', logginWithEmail)
+        logoutBtn.addEventListener('click', logout);
+    </script>
+
+    <div class="footer">
+    <p>PanCzapeczka Sp.zoo &copy;<span class="footer__year">2022</spanc>
+    </p>
+</div>
+    <!-- bootstrap cdn -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+<!-- slick carusela -->
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+
+<!-- firebase config -->
+
+
+
+<!--  -->
+
+<script type="text/javascript" src="./dist/js/slick-min.js"></script>
+
+<!-- my scripts -->
+<script src="./dist/js/script-min.js"></script>
+
+</body>
+
+</html>
